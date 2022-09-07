@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useState } from "react";
+import styled from 'styled-components';
+import ResetStyled from './reset/reset';
+import CreatCont from './CreatCont';
+import Enter from './Enter';
+//import Spending from './Spending';
+// import NewExpense from './NewExpense'
+// import NewGain from './NewGain';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import UserContext from './parts/UserContext';
+
+export default function App() {
+    const [user, setUser] = useState([]); 
+    return (
+        <>
+            <UserContext.Provider value={{ user, setUser }}>
+                <ResetStyled />
+                <Wrapper>
+                    <BrowserRouter>
+                        <Routes>
+                            <Route path="/" element={<Enter />} />
+                            <Route path="/cadastro" element={<CreatCont />} />
+                            {/* <Route path='/gastos' element={<Spending />} />
+                            <Route path='/Novo-gasto' element={<NewExpense />} />
+                            <Route path='/Novo-ganho' element={<NewGain />} /> */}
+                        </Routes>
+                    </BrowserRouter>
+                </Wrapper>
+            </UserContext.Provider>
+        </>
+    );
 }
-
-export default App;
+const Wrapper = styled.div`
+    background-color: #8C11BE ;
+    display: flex;
+    justify-content: center ;
+    height: 180vw;
+`;
