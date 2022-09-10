@@ -4,9 +4,8 @@ import styled from 'styled-components';
 import ResetStyled from './reset/reset';
 import CreatCont from './CreatCont';
 import Enter from './Enter';
-//import Spending from './Spending';
-// import NewExpense from './NewExpense'
-// import NewGain from './NewGain';
+import Extract from './Extract'
+import NewValue from './NewValue'
 
 import UserContext from './parts/UserContext';
 
@@ -21,9 +20,9 @@ export default function App() {
                         <Routes>
                             <Route path="/" element={<Enter />} />
                             <Route path="/cadastro" element={<CreatCont />} />
-                            {/* <Route path='/gastos' element={<Spending />} />
-                            <Route path='/Novo-gasto' element={<NewExpense />} />
-                            <Route path='/Novo-ganho' element={<NewGain />} /> */}
+                            <Route path='/Extrato' element={<Extract/>} />
+                            <Route path='/Novo-gasto' element={<NewValue optional={false} />} />
+                            <Route path='/Novo-recebido' element={<NewValue optional={true} />} /> 
                         </Routes>
                     </BrowserRouter>
                 </Wrapper>
@@ -32,6 +31,7 @@ export default function App() {
     );
 }
 const Wrapper = styled.div`
+    @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Saira+Stencil+One&display=swap');
     background-color: #8C11BE ;
     display: flex;
     justify-content: center ;

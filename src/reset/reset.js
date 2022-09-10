@@ -26,8 +26,6 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
-	@import url('https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap');
-	@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Saira+Stencil+One&display=swap');	
 	line-height: 1;
 }
 ol, ul {
@@ -42,7 +40,7 @@ q:before, q:after {
 	content: none;
 }
 *{
-	font-family: 'Raleway' ;
+	font-family: Raleway ;
 	box-sizing: border-box;
 }
 table {

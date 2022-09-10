@@ -1,25 +1,44 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import '@fontsource/saira-stencil-one';
+import '@fontsource/raleway';
 
-function Container(props){
+function Container({...props}){
     return(
-        <Contai size={props.size} font={props.font} > {props.children}</Contai>
+        <Contai {...props}> {props.children}</Contai>
     )   
 }
 const Contai = styled.div`
     padding: 15px;
     margin: 0px 0px 30px 5%;
-    width: 90%;
-    background: #FFFFFF;
+    background:${props => props.background };
     border-radius: 5px;
-    ${(props)=> {if(props.size==="mediun"){ return `height:180px;`;} if(props.size==="auto"){ return `height:auto;`;}if(props.size==="min"){ return `height:91px;`;} } }
+    width:${props => props.width } ;
+    height:${props => props.height } ;
 
 `;
+function Heade({...props}){
+    return(
+        <Headers>{props.children} </Headers>
+    )
 
+}
+const Headers = styled.span`
+    margin: 20px;
+    font-family: 'Saira Stencil One' ;
+    width: 147px;
+    height: 50px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 50px;
+    color: #FFFFFF;
+`;
+ 
 
 function Button({...props}){
     return(
-        <Butto{...props}>{props.children}</Butto>
+        <Butto {...props}></Butto>
     )
 
 }
@@ -33,6 +52,7 @@ const Butto = styled.button`
         height: ${props=> props.heigt};
         background: #A328D6;
         border-radius: 5px;
+        font-family:'Raleway' ;
         font-style: normal;
         font-weight: 700;
         font-size: 21px;
@@ -40,9 +60,10 @@ const Butto = styled.button`
         color: #FFFFFF;
         opacity: ${(props) => !props.bolean ? 1 : 0.5 };
         transition: background 50ms linear ;
+        margin: 7px 0px;
         :active{
-        background-color: ${props => '#' + Math.floor(Math.random() * 0x1000000).toString(16).padStart(6, '0')} ;
-        transform: translatey(4px);
+            background-color: ${props => '#' + Math.floor(Math.random() * 0x1000000).toString(16).padStart(6, '0')} ;
+            transform: translatey(4px);
         }
   
 `;
@@ -94,9 +115,10 @@ const Inp = styled.input`
         border: 1px solid #D5D5D5;
         border-radius: 5px;
         height: 58px;
-        margin-bottom: 5px;
+        margin: 7px 0px;
         color:${(props) => !props.background ? "#000000" : "#D4D4D4" };
         opacity: ${(props) => !props.background ? 1 : 0.6 } ;
+        font-family: 'Raleway' ;
         font-style: normal;
         font-weight: 400;
         font-size: 21px;
@@ -119,7 +141,7 @@ const Inp = styled.input`
 
 function Topo({logo, image}){
 return(
-    <Top><img src={logo} /> <Foto src={image}/> </Top>
+    <Top><img src={logo} /> </Top>
 )
 }
 const Top = styled.div`
@@ -139,37 +161,5 @@ const Top = styled.div`
         margin: 0px 20px;    
     }
 `;
-const Foto = styled.img`
-    margin: 0px 20px;
-    border-radius: 50%;
-    width: 51px;
-    height: 51px;
-    
-    `;
 
-
-const Base=styled.div`
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 70px;
-    background: #FFFFFF;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    a{
-        text-decoration: none;
-        color:#52B6FF ;
-    }
-
-`;
-const Circule = styled.div`
-width: 91px;
-height: 91px;
-margin-bottom: 50px;
-
-`;
-
-
-export { Container, Button ,Text , Input, Topo, Linkers }
+export { Container, Button ,Text , Input, Topo, Linkers, Heade }
