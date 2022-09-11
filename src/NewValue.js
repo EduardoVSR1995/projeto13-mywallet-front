@@ -1,45 +1,48 @@
 import { Button, Input } from "./parts/Subparts";
 import { useNavigate } from "react-router-dom";
-import {postExtract} from "./parts/mywallet"
+import UserContext from "./parts/UserContext";
+import {postExtract} from "./parts/mywallet";
+import { useContext, useState} from "react";
+import vetor from './imags/Vector.png';
 import styled from "styled-components";
-import { useState} from "react";
-import dayjs from 'dayjs'
+import dayjs from 'dayjs';
 
 
-export default function NewValue({optional}){
-    const [value , setValue] = useState({boolean:false})
+export default function NewValur({optional}){
+    const {user, setUser} = useContext(UserContext)
+    const [valur , setValur] = useState({boolean:false})
     const navigate = useNavigate();
-    
-    function newValue(event){
+    console.log(user)
+
+    function newValur(event){
         event.preventDefault();
-        setValue({...value, boolean:!value.boolean})
         const obj= {
-            price: value.price,
-            description: value.description,
+            price: valur.price,
+            description: valur.description,
             date: dayjs().format('DD/MM'),
         } 
+    
         if(optional){
-            postExtract({...obj, extract:true}).catch(err).then(sucess);
+            postExtract({...obj, extract:true}, { headers: { Authorization: `Bearer ${user.token}` } }).catch(err).then(sucess);
             return
         }
-        postExtract({...obj, extract:false}).catch(err).then(sucess);
+        postExtract({...obj, extract:false}, { headers: { Authorization: `Bearer ${user.token}` } }).catch(err).then(sucess);
             return
-        
-    }
+        }
     function sucess(){
         return navigate('/Extrato')
     }
     function err(erro){
-        return alert(erro) && setValue({...value, boolean:!value.boolean});
+        return alert(erro) && setValur({...valur, boolean: !valur.boolean});
     }
     console.log(optional);
     return(
         <AllContainer>
-            <p> Nova entrada </p>
-            <form onSubmit={newValue}>
-            <Input type={'number'} background={value.boolean} placeholder={"Valor"} onChange={e => setValue({...value, price: e.target.event })} required readOnly={value.boolean}/> 
-            <Input background={value.boolean} placeholder={"Descrição"} onChange={e => setValue({...value, description: e.target.event })} required readOnly={value.boolean}/>
-            <Button type={"submit"} width={"100%"} bolean={value.boolean} heigt={"58px"} >{ optional ? 'Salvar entrada' : 'Salvar saída'}</Button>
+            <p> {optional? "Nova entrada": "Nova saida"} <img src={vetor} onClick={user.exit}/></p>
+            <form onSubmit={newValur}>
+            <Input  type={'number'} step="0.01" min="0.01" background={valur.boolean} placeholder={"Valor"} onChange={e => setValur({...valur, price: e.target.value })} required readOnly={valur.boolean}/> 
+            <Input type={'texte'} background={valur.boolean} placeholder={"Descrição"} onChange={e => setValur({...valur, description: e.target.value })} required readOnly={valur.boolean}/>
+            <Button type={"submit"} width={"100%"} bolean={valur.boolean} heigt={"58px"} >{ optional ? 'Salvar entrada' : 'Salvar saída'}</Button>
             </form>
 
         </AllContainer>
@@ -71,7 +74,7 @@ const AllContainer = styled.div`
         line-height: 31px;
         margin:25px ;
         padding: 20px;
-        width: 100%;
+        width: 94%;
         color: #FFFFFF;
         display: flex;
         align-items: center;

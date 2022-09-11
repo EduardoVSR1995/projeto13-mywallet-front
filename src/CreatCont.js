@@ -14,17 +14,22 @@ export default function CreatCont(){
         event.preventDefault();
         const {name, email, password, confirmPassword} = personalDate
         if( password !== confirmPassword ) return alert("As senhas são diferentes");
-        setBoolean(!boolean)
+        setBoolean(!boolean);
         console.log(event);
-        postCreat({name: name, email:email, password:password}).catch(err).then(sucess);
+        const i = postCreat({name: name, email:email, password:password});
+        i.then(sucess);
+        i.catch(err);
     }
     
 
     function err(value){
-        return alert(value) && setBoolean(!boolean);
+        setBoolean(boolean)
+        return alert(value) ;
     }
-    function sucess(){
-        return navigate("/", alert("Parabéns, cadastro concluído") );
+    function sucess(value){
+        alert("Parabéns, cadastro concluído");
+        navigate("/")
+        return ;
     }
 
     return(

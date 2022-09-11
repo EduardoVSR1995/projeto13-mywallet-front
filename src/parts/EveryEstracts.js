@@ -1,45 +1,21 @@
 import styled from "styled-components"
-import { Container, Text } from "./Subparts"
-import { delHabts } from "./mywallet";
-import UserContext from './UserContext';
-import { useContext } from "react";
+import { Container , Text} from "./Subparts"
 
-export default function EveryEstracts({obj}){
-    const {user ,setUser} = useContext(UserContext);
-    function del(){
-        const boole =  window.confirm("desejaexcluir o habito")
-        if(boole){
-        const promis = delHabts(obj.id , {headers: {Authorization: `Bearer ${user.token}`}} )
-        promis.then(sucess);
-        promis.catch(err);
-        }
+export default function EveryEstracts({...props}){
+    const {date, description, price, extract} = props.obj;
+    let increaseDecrease = `#C70000`;
+    if(extract){
+        increaseDecrease='#03AC00';
     }
-    function sucess(){
-        setUser({...user, reload:true })
-        user.reload2();        
-    }
-    function err(value){
-        alert(value)
-
-    }
-
     return(
-        <Container size={"min"} >
-           <Text>{obj.name} </Text><Img onClick={del} /> 
-           <Days></Days>
+        <Container >
+           <Tex><Text color={'#C6C6C6'}>{date} <Text color={'#000000'}> &nbsp; {description}</Text> </Text><Text color={increaseDecrease}>{Number(price).toFixed(2)}</Text></Tex> 
         </Container>
     )
 }
-const Img = styled.img`
-    position: relative;
-    bottom: 20px;
-    left: 300px;
-    z-index: 0;
-`;
 
-const Days = styled.div`
-    bottom: 10px;
-    width: 320px;
-    display: flex;
-    
+const Tex = styled.div`
+    width: 100% ;
+    display: flex ;
+    justify-content:space-between ;
 `;

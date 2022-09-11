@@ -10,8 +10,8 @@ function Container({...props}){
 }
 const Contai = styled.div`
     padding: 15px;
-    margin: 0px 0px 30px 5%;
-    background:${props => props.background };
+    margin: 0px 0px 0px 5%;
+    background: ${props => props.background };
     border-radius: 5px;
     width:${props => props.width } ;
     height:${props => props.height } ;
@@ -85,20 +85,20 @@ const Linke = styled.div`
     }
 `;
 
-function Text(props){
+function Text({...props}){
     return(
-        <Tex font={props.font} >{props.children}</Tex>
+        <Tex {...props} >{props.children}</Tex>
     )
 }
 const Tex = styled.div`
+    font-family: 'Raleway' ;
     display: flex;
-    width: 100%;
-    height: 20px;
+    height: 15px;
     font-style: normal;
-    font-weight: 400;
-    font-size: ${props=> props.font !== undefined ? "13px" : "18px" };
+    font-weight:${props=> props.weight ? props.weight: 400 };
+    font-size: ${props=> props.font };
     line-height: 25px;
-    color: #666666;
+    color: ${props=> props.color };
 `;
 
 

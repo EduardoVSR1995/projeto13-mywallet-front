@@ -24,9 +24,15 @@ function getToday(header){
     return promise;    
 }
 
-function postExtract(obj){
-    const promis = axios.post(`${URL}Extract` , obj);
+function postExtract(obj, header){
+    const promis = axios.post(`${URL}Extract`, obj, header);
     return promis;
+}
+
+function getMyextracts(header){
+    const promise = axios.get(`${URL}MyExtract`, header);
+    return promise;    
+
 }
 
 ////////////////
@@ -37,10 +43,6 @@ function postLoginHeader(obj, header ){
     return promise;
 }
 
-function getHeader(header){
-    const promise = axios.get(`${URL}habits`,header);
-    return promise;
-}
 function delHabts(id , header){
     const promise = axios.delete(`${URL}habits/${id}`, header);
     return promise;
@@ -61,4 +63,4 @@ function getHistori(header){
 
 
 
-export { getHistori , postUncheck ,postExtract , postLogin ,postCreat , postLoginHeader, getHeader, delHabts, getToday };
+export { getHistori , postUncheck, getMyextracts,postExtract , postLogin ,postCreat , postLoginHeader, delHabts, getToday };

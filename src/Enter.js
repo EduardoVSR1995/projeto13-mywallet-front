@@ -14,7 +14,7 @@ export default function Enter(){
 
     function login(event){
         event.preventDefault();
-        setBoolean(boolean)
+        setBoolean(!boolean)
         const obj= {
             email: loginDate.email,
             password: loginDate.password
@@ -23,11 +23,12 @@ export default function Enter(){
         
     }
     function sucess(value){
-        setUser(value.data);
+        setUser({token:value.data});
         return navigate('/Extrato')
     }
     function err(value){
-        return alert(value) && setBoolean(!boolean);
+        setBoolean(boolean);
+        return alert(value);
     }
     return(
 
