@@ -1,10 +1,8 @@
-import { useState} from 'react';
-import { useNavigate} from 'react-router-dom';
-import styled from 'styled-components';
-import { postCreat } from './parts/mywallet';
 import {Button, Input, Linkers, Heade} from './parts/Subparts';
-
-
+import { useNavigate} from 'react-router-dom';
+import { postCreat } from './parts/mywallet';
+import styled from 'styled-components';
+import { useState} from 'react';
 
 export default function CreatCont(){
     const [personalDate, setPersonalDate]= useState({});
@@ -15,7 +13,6 @@ export default function CreatCont(){
         const {name, email, password, confirmPassword} = personalDate
         if( password !== confirmPassword ) return alert("As senhas são diferentes");
         setBoolean(!boolean);
-        console.log(event);
         const i = postCreat({name: name, email:email, password:password});
         i.then(sucess);
         i.catch(err);
@@ -26,7 +23,7 @@ export default function CreatCont(){
         setBoolean(boolean)
         return alert(value) ;
     }
-    function sucess(value){
+    function sucess(){
         alert("Parabéns, cadastro concluído");
         navigate("/")
         return ;

@@ -12,7 +12,6 @@ export default function NewValur({optional}){
     const {user, setUser} = useContext(UserContext)
     const [valur , setValur] = useState({boolean:false})
     const navigate = useNavigate();
-    console.log(user)
 
     function newValur(event){
         event.preventDefault();
@@ -35,12 +34,11 @@ export default function NewValur({optional}){
     function err(erro){
         return alert(erro) && setValur({...valur, boolean: !valur.boolean});
     }
-    console.log(optional);
     return(
         <AllContainer>
             <p> {optional? "Nova entrada": "Nova saida"} <img src={vetor} onClick={user.exit}/></p>
             <form onSubmit={newValur}>
-            <Input  type={'number'} step="0.01" min="0.01" background={valur.boolean} placeholder={"Valor"} onChange={e => setValur({...valur, price: e.target.value })} required readOnly={valur.boolean}/> 
+            <Input  type={'number'} step={"0.01"} min={"0.01"} background={valur.boolean} placeholder={"Valor"} onChange={e => setValur({...valur, price: e.target.value })} required readOnly={valur.boolean}/> 
             <Input type={'texte'} background={valur.boolean} placeholder={"Descrição"} onChange={e => setValur({...valur, description: e.target.value })} required readOnly={valur.boolean}/>
             <Button type={"submit"} width={"100%"} bolean={valur.boolean} heigt={"58px"} >{ optional ? 'Salvar entrada' : 'Salvar saída'}</Button>
             </form>
@@ -48,10 +46,6 @@ export default function NewValur({optional}){
         </AllContainer>
     )
 }
-
-
-
-
 
 const AllContainer = styled.div`
     

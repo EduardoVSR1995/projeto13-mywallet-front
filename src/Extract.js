@@ -32,7 +32,6 @@ export default function Extract() {
             }
             else{plusplus-=Number(i.price)}
         })
-        console.log(plusplus);
         if(plusplus>=0){
             setAdd({...add, movements:list ,cont: plusplus, color:'#03AC00',exit: exit });
         }else{
@@ -47,12 +46,10 @@ export default function Extract() {
 
 
     function sucess1(value) {
-        console.log(value)
         setUser({...user, name:value.data.name });
     }
 
     function sucess2(value) {
-        console.log(value)
         cont(value.data);        
     }
     function err(value) {

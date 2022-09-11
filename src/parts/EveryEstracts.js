@@ -1,5 +1,5 @@
-import styled from "styled-components"
 import { Container , Text} from "./Subparts"
+import styled from "styled-components"
 
 export default function EveryEstracts({...props}){
     const {date, description, price, extract} = props.obj;

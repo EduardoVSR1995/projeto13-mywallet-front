@@ -1,13 +1,12 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { useState } from "react";
-import styled from 'styled-components';
-import ResetStyled from './reset/reset';
-import CreatCont from './CreatCont';
-import Enter from './Enter';
-import Extract from './Extract'
-import NewValue from './NewValue'
-
 import UserContext from './parts/UserContext';
+import ResetStyled from './reset/reset';
+import styled from 'styled-components';
+import CreatCont from './CreatCont';
+import { useState } from "react";
+import NewValue from './NewValue'
+import Extract from './Extract'
+import Enter from './Enter';
 
 export default function App() {
     const [user, setUser] = useState([]); 
@@ -31,7 +30,6 @@ export default function App() {
     );
 }
 const Wrapper = styled.div`
-    @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Saira+Stencil+One&display=swap');
     background-color: #8C11BE ;
     display: flex;
     justify-content: center ;

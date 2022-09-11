@@ -138,28 +138,4 @@ const Inp = styled.input`
 
 `;
 
-
-function Topo({logo, image}){
-return(
-    <Top><img src={logo} /> </Top>
-)
-}
-const Top = styled.div`
-    z-index: 1;
-    position: fixed;
-    left: 0px;
-    top:0px;
-    width: 100%;
-    height: 70px;
-    background: #126BA5;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-   
-    img{
-        margin: 0px 20px;    
-    }
-`;
-
-export { Container, Button ,Text , Input, Topo, Linkers, Heade }
+export { Container, Button ,Text , Input, Linkers, Heade }
