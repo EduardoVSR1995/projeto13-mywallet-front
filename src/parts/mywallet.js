@@ -29,6 +29,11 @@ function getMyextracts(header){
 
 }
 
+function deletCont(header){
+    const promise = axios.delete(`${URL}MyExtract`, header);
+    return promise;    
+
+}
 
 
-export { getMyextracts, getToday, postExtract, postLogin, postCreat };
+export{ getMyextracts, getToday, postExtract, postLogin, postCreat, deletCont };

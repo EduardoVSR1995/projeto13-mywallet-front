@@ -19,8 +19,13 @@ export default function Extract() {
     useEffect( () => {
         getToday({ headers: { Authorization: `Bearer ${user.token}` } }).catch(err).then(sucess1);
         getMyextracts({headers: { Authorization: `Bearer ${user.token}`}}).catch(err).then(sucess2);
+        user.movements === undefined ? cont() : cont(user.movements);
     }, []);
     
+    function reload(){
+        getMyextracts({headers: { Authorization: `Bearer ${user.token}`}}).catch(err).then(sucess2);
+    }
+
     function cont(list){
 
         if(!list) return; 
@@ -62,7 +67,7 @@ export default function Extract() {
                 <p> Olá, {user.name} <img src={vetor} onClick={exit}/> </p>
                 
                 <Container background={'#FFFFFF'} width={'90%'} height={'70%'}>
-                  <Allextracts> {add.movements === undefined || add.movements.length === 0 ? <h1>Não há registros de <br/> entrada ou saída</h1> : add.movements.map((value,index)=><EveryEstracts key={index} obj={value} ></EveryEstracts> ) }</Allextracts>
+                  <Allextracts> {add.movements === undefined || add.movements.length === 0 ? <h1>Não há registros de <br/> entrada ou saída</h1> : add.movements.map((value,index)=><EveryEstracts key={index} obj={value} reload={reload} ></EveryEstracts> ) }</Allextracts>
                     {add.movements === undefined || add.movements.length === 0 ? "" : <h3><Text weight={'700'} >SALDO</Text><Text color={add.color}>{add.cont.toFixed(2)}</Text></h3>}
                 </Container>
                 <Container onClick={()=> navigat('/Novo-recebido')} background={'#A328D6'} width={'42.5%'} height={'20%'} ><Imges src={plus}/><h2>Nova <br/> entrada</h2></Container>
