@@ -1,11 +1,11 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import UserContext from './parts/UserContext';
 import ResetStyled from './reset/reset';
-import ModifiValue from './ModifiValue';
+import ModifiValue from './parts/ModifiValue';
 import styled from 'styled-components';
 import CreatCont from './CreatCont';
 import { useState } from "react";
-import NewValue from './NewValue'
+import NewValue from './parts/NewValue'
 import Extract from './Extract'
 import Enter from './Enter';
 
@@ -37,5 +37,5 @@ const Wrapper = styled.div`
     background-color: #8C11BE ;
     display: flex;
     justify-content: center ;
-    height: 200vw;
+    height: 100vh;
 `;

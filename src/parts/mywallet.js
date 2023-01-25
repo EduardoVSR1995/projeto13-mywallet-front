@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = "http://localhost:5000/";
+const URL = "https://mywallet-zo0k.onrender.com/";
 
 function postCreat(obj){
     const promise = axios.post(`${URL}creatCont`,obj);

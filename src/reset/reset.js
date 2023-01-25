@@ -50,5 +50,17 @@ table {
 strong {
 	font-weight: bold;
 }
+
+
+
+
+
 `
+
+
+
+
+
+
+
 export default ResetStyled;

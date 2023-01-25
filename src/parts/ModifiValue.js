@@ -1,9 +1,9 @@
-import { Button, Input } from "./parts/Subparts";
-import { useNavigate } from "react-router-dom";
-import UserContext from "./parts/UserContext";
-import {patchModfi} from "./parts/mywallet";
+import { Button, Input } from "./Subparts";
+import { useLocation, useNavigate } from "react-router-dom";
+import UserContext from "./UserContext";
+import {patchModfi} from "./mywallet";
 import { useContext, useState} from "react";
-import vetor from './imags/Vector.png';
+import vetor from '../imags/Vector.png';
 import styled from "styled-components";
 import dayjs from 'dayjs';
 
@@ -12,19 +12,23 @@ export default function NewValur({optional}){
     const {user, setUser} = useContext(UserContext)
     const [valur , setValur] = useState({boolean:false})
     const navigate = useNavigate();
+    const {state} = useLocation()
 
     function newValur(event){
         event.preventDefault();
         const obj= {
+            id : state,
             price: valur.price,
             description: valur.description,
             date: dayjs().format('DD/MM'),
         } 
+
     
         if(optional){
             patchModfi({...obj, extract:true}, { headers: { Authorization: `Bearer ${user.token}` } }).catch(err).then(sucess);
             return
         }
+
         patchModfi({...obj, extract:false}, { headers: { Authorization: `Bearer ${user.token}` } }).catch(err).then(sucess);
             return
         }
@@ -36,7 +40,7 @@ export default function NewValur({optional}){
     }
     return(
         <AllContainer>
-            <p> {optional? "Editar entrada": "Editar saida"} <img src={vetor} onClick={user.exit}/></p>
+            <p> {optional? "Editar entrada": "Editar saida"} <img src={vetor} onClick={sucess}/></p>
             <form onSubmit={newValur}>
             <Input  type={'number'} step={"0.01"} min={"0.01"} background={valur.boolean} placeholder={"Valor"} onChange={e => setValur({...valur, price: e.target.value })} required readOnly={valur.boolean}/> 
             <Input type={'texte'} background={valur.boolean} placeholder={"Descrição"} onChange={e => setValur({...valur, description: e.target.value })} required readOnly={valur.boolean}/>

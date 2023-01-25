@@ -1,12 +1,11 @@
-import { Button, Input } from "./parts/Subparts";
+import { Button, Input } from "./Subparts";
 import { useNavigate } from "react-router-dom";
-import UserContext from "./parts/UserContext";
-import {postExtract} from "./parts/mywallet";
+import UserContext from "./UserContext";
+import {postExtract} from "./mywallet";
 import { useContext, useState} from "react";
-import vetor from './imags/Vector.png';
+import vetor from '../imags/Vector.png';
 import styled from "styled-components";
 import dayjs from 'dayjs';
-
 
 export default function NewValur({optional}){
     const {user, setUser} = useContext(UserContext)
@@ -36,7 +35,7 @@ export default function NewValur({optional}){
     }
     return(
         <AllContainer>
-            <p> {optional? "Nova entrada": "Nova saida"} <img src={vetor} onClick={user.exit}/></p>
+            <p> {optional? "Nova entrada": "Nova saida"} <img src={vetor} onClick={sucess}/></p>
             <form onSubmit={newValur}>
             <Input  type={'number'} step={"0.01"} min={"0.01"} background={valur.boolean} placeholder={"Valor"} onChange={e => setValur({...valur, price: e.target.value })} required readOnly={valur.boolean}/> 
             <Input type={'texte'} background={valur.boolean} placeholder={"Descrição"} onChange={e => setValur({...valur, description: e.target.value })} required readOnly={valur.boolean}/>
@@ -56,8 +55,7 @@ const AllContainer = styled.div`
         width: 90% ;
         margin: 0px 5% ;
     }
-    
-    
+
     p{
 
         height: 30px;
@@ -74,6 +72,4 @@ const AllContainer = styled.div`
         align-items: center;
         justify-content: space-between;
     }
-    
-    
-    `;
+`;

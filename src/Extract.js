@@ -64,41 +64,43 @@ export default function Extract() {
     return (
             <AllContainer>
 
-                <p> Olá, {user.name} <img src={vetor} onClick={exit}/> </p>
-                
-                <Container background={'#FFFFFF'} width={'90%'} height={'70%'}>
+                <p> Olá, {user.name}{ add.cont ? `, seu saldo é de $${add.cont.toFixed(2)}`: ""} <img src={vetor} onClick={exit}/> </p>
+                <Container background={'#FFFFFF'} width={'90%'} height={'50%'}>
                   <Allextracts> {add.movements === undefined || add.movements.length === 0 ? <h1>Não há registros de <br/> entrada ou saída</h1> : add.movements.map((value,index)=><EveryEstracts key={index} obj={value} reload={reload} ></EveryEstracts> ) }</Allextracts>
-                    {add.movements === undefined || add.movements.length === 0 ? "" : <h3><Text weight={'700'} >SALDO</Text><Text color={add.color}>{add.cont.toFixed(2)}</Text></h3>}
+                    {add.movements === undefined || add.movements.length === 0 ? "" : <h3><Text weight={'700'} >SALDO</Text><Text color={add.color}>$ {add.cont.toFixed(2)}</Text></h3>}
                 </Container>
-                <Container onClick={()=> navigat('/Novo-recebido')} background={'#A328D6'} width={'42.5%'} height={'20%'} ><Imges src={plus}/><h2>Nova <br/> entrada</h2></Container>
-                <Container onClick={()=> navigat('/Novo-gasto')}background={'#A328D6'} width={'42.5%'} height={'20%'} ><Imges src={less}/><h2>Nova <br/> saída</h2></Container>
+                <Container onClick={()=> navigat('/Novo-recebido')} background={'#A328D6'} width={'42.5%'} height={'20%'} ><Imges src={plus}/><h2 >Nova entrada</h2></Container>
+                <Container onClick={()=> navigat('/Novo-gasto')}background={'#A328D6'} width={'42.5%'} height={'20%'} ><Imges src={less}/><h2>Nova saída</h2></Container>
 
             </AllContainer>
     )
 }
 
+
+
 const Imges = styled.img`
-    width: 10% ;
-    margin: 3%;
+    width: 9% ;
 `;
 
 const Allextracts = styled.div`
-    height: 92% ;
+    height: 90% ;
     overflow: scroll ;
+    ::-webkit-scrollbar { display: none; }
+    
+
+
 `;
 
 
 const AllContainer = styled.div`
     display: flex ;
     flex-wrap: wrap ;
-    width: 100%;
-    height: 99%;
-    background-color:#8C11BE ;
-    h3{ 
+    
+     h3{ 
         display:flex ;
         justify-content: space-between;
-        width: 93% ;
-        margin: 45px 45px ;
+        width: 90% ;
+        margin-left: 7% ;
     }
 
     h1{
@@ -117,12 +119,17 @@ const AllContainer = styled.div`
         font-weight: 700;
         font-size: 26px;
         line-height: 31px;
-        margin-top:40% ;
-        padding: 20px;
-        width: 100%;
-        color: #FFFFFF;  
-    
+        margin: 5% ;
+        width:100%;
+        color: #FFFFFF;
+        
+        
     }
+    @media (max-width:900px){        
+        h2{
+            width: 20% ;
+} }
+    
 
     p{
 
@@ -130,10 +137,9 @@ const AllContainer = styled.div`
         font-style: normal;
         font-weight: 700;
         font-size: 26px;
-        line-height: 31px;
-        margin:25px ;
+        margin-left: 4% ;
         padding: 20px;
-        width: 100%;
+        width: 90%;
         color: #FFFFFF;
         display: flex;
         align-items: center;
@@ -141,5 +147,5 @@ const AllContainer = styled.div`
 }
 
 
-  
+
 `;
